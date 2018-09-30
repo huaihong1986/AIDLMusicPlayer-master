@@ -1,10 +1,10 @@
 package com.aidlmusicplayer.www.net;
 
 import com.aidlmusicplayer.www.api.MusicApi;
-import com.aidlmusicplayer.www.bean.PaySongBean;
-import com.aidlmusicplayer.www.bean.RecommandSongListBean;
-import com.aidlmusicplayer.www.bean.SearchSongBean;
-import com.aidlmusicplayer.www.bean.SongBillListBean;
+import com.aidlmusicplayer.www.aidl.PaySongBean;
+import com.aidlmusicplayer.www.aidl.RecommandSongListBean;
+import com.aidlmusicplayer.www.aidl.SearchSongBean;
+import com.aidlmusicplayer.www.aidl.SongBillListBean;
 
 import java.io.IOException;
 import java.util.Map;

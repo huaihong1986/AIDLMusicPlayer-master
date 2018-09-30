@@ -1,5 +1,5 @@
 // IMusicPlayer.aidl
-package com.aidlmusicplayer.www;
+package com.aidlmusicplayer.www.aidl;
 
 
 

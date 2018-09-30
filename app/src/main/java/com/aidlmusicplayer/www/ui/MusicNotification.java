@@ -6,24 +6,21 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Message;
 import android.os.RemoteException;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
-import com.aidlmusicplayer.www.IMusicPlayer;
-import com.aidlmusicplayer.www.IMusicPlayerListener;
+import com.aidlmusicplayer.www.aidl.IMusicPlayer;
+import com.aidlmusicplayer.www.aidl.IMusicPlayerListener;
 import com.aidlmusicplayer.www.MainActivity;
 import com.aidlmusicplayer.www.R;
-import com.aidlmusicplayer.www.bean.SongListBean;
+import com.aidlmusicplayer.www.aidl.SongListBean;
 import com.aidlmusicplayer.www.config.Constant;
 import com.aidlmusicplayer.www.receiver.NotificationReceiver;
 import com.aidlmusicplayer.www.service.MusicService;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.NotificationTarget;
-
-import java.io.Serializable;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 import static com.aidlmusicplayer.www.service.MusicService.MUSIC_ACTION_PAUSE;
@@ -157,6 +154,7 @@ public class MusicNotification {
             remoteViews.setImageViewResource(R.id.iv_pause, R.mipmap.note_btn_pause);
         } else if (MusicService.MUSIC_CURRENT_ACTION == MUSIC_ACTION_PAUSE) {
             remoteViews.setImageViewResource(R.id.iv_pause, R.mipmap.note_btn_play);
+            mNotificationManager.cancel(0);
         }
 
 
@@ -172,14 +170,7 @@ public class MusicNotification {
         remoteViews.setOnClickPendingIntent(R.id.iv_next, nextPendingIntent);
 
 //        5.close
-//        ....
-        Intent stopIntent = new Intent(NotificationReceiver.ACTION_MUSIC_STOP);
-        stopIntent.putExtra(Constant.TAG_FLAG_1, MUSIC_ACTION_STOP);
-        PendingIntent stopPendingIntent = PendingIntent.getBroadcast(context, 4,stopIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        remoteViews.setOnClickPendingIntent(R.id.iv_stop, stopPendingIntent);
-        if (MusicService.MUSIC_CURRENT_ACTION == MUSIC_ACTION_STOP){
-            mNotificationManager.cancel(0);
-        }
+//
             return remoteViews;
     }
 

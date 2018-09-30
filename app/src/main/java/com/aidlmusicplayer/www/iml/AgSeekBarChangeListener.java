@@ -4,7 +4,7 @@ import android.os.RemoteException;
 import android.widget.SeekBar;
 
 import com.aidlmusicplayer.www.App;
-import com.aidlmusicplayer.www.IMusicPlayer;
+import com.aidlmusicplayer.www.aidl.IMusicPlayer;
 import com.aidlmusicplayer.www.service.MusicService;
 
 /**

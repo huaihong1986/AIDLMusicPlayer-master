@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 
+import com.aidlmusicplayer.www.aidl.IMusicPlayer;
 import com.aidlmusicplayer.www.service.MusicService;
 import com.aidlmusicplayer.www.ui.MusicNotification;
 

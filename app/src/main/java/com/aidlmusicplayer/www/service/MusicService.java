@@ -11,12 +11,13 @@ import android.os.Message;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.text.TextUtils;
+import android.util.Log;
 
-import com.aidlmusicplayer.www.IMusicPlayer;
-import com.aidlmusicplayer.www.IMusicPlayerListener;
-import com.aidlmusicplayer.www.bean.MusicServiceBean;
-import com.aidlmusicplayer.www.bean.PaySongBean;
-import com.aidlmusicplayer.www.bean.SongListBean;
+import com.aidlmusicplayer.www.aidl.IMusicPlayer;
+import com.aidlmusicplayer.www.aidl.IMusicPlayerListener;
+import com.aidlmusicplayer.www.aidl.MusicServiceBean;
+import com.aidlmusicplayer.www.aidl.PaySongBean;
+import com.aidlmusicplayer.www.aidl.SongListBean;
 import com.aidlmusicplayer.www.helper.GsonHelper;
 import com.aidlmusicplayer.www.net.NetCallBack;
 import com.aidlmusicplayer.www.net.NetManager;
@@ -24,6 +25,7 @@ import com.aidlmusicplayer.www.net.log.AGLog;
 import com.aidlmusicplayer.www.util.ToastUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -66,14 +68,13 @@ public class MusicService extends Service implements
     /******************************************************************/
     private MediaPlayer mMediaPlayer;
     private Timer mTimer;
-
     private RemoteCallbackList<IMusicPlayerListener> mListenerList
             = new RemoteCallbackList<>();
 
 
     private int currentPosition;
     private ArrayList<SongListBean> mSong_list = new ArrayList<>();
-
+    private static  List<SongListBean> mSongList = new ArrayList<>();
     Binder mBinder = new IMusicPlayer.Stub() {
         @Override
         public void action(int action, String datum) throws RemoteException {
@@ -149,6 +150,13 @@ public class MusicService extends Service implements
             }
             return msg;
         }
+        @Override
+        public void setPlayerListData(List<SongListBean> infos) throws RemoteException {
+            mSongList = infos;
+            Log.e("TAG","data"+mSongList.toString());
+        }
+
+
     };
 
 

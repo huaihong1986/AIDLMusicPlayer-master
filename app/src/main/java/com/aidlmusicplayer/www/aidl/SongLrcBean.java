@@ -1,4 +1,4 @@
-package com.aidlmusicplayer.www.bean;
+package com.aidlmusicplayer.www.aidl;
 
 /**
  * author：agxxxx on 2017/3/3 10:49

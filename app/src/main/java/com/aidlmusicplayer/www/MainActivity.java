@@ -12,9 +12,9 @@ import android.widget.ImageView;
 
 import com.aidlmusicplayer.www.activity.MusicActivity;
 import com.aidlmusicplayer.www.base.BaseRecyclerViewAdapter;
-import com.aidlmusicplayer.www.bean.MusicServiceBean;
-import com.aidlmusicplayer.www.bean.SongBillListBean;
-import com.aidlmusicplayer.www.bean.SongListBean;
+import com.aidlmusicplayer.www.aidl.MusicServiceBean;
+import com.aidlmusicplayer.www.aidl.SongBillListBean;
+import com.aidlmusicplayer.www.aidl.SongListBean;
 import com.aidlmusicplayer.www.helper.GsonHelper;
 import com.aidlmusicplayer.www.net.NetCallBack;
 import com.aidlmusicplayer.www.net.NetManager;
@@ -187,10 +187,9 @@ public class MainActivity extends AppCompatActivity implements XRecyclerView.Loa
             musicServiceBean.position = position;
             musicServiceBean.backgroundUrl = info.pic_big;
             try {
-                App.
-                        app.
-                        getMusicPlayerService().
+                App.app.getMusicPlayerService().
                         action(MusicService.MUSIC_ACTION_PLAY, GsonHelper.getGson().toJson(musicServiceBean));
+                App.app.getMusicPlayerService().setPlayerListData((ArrayList<SongListBean>) mSongListAdapter.getDatum());
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

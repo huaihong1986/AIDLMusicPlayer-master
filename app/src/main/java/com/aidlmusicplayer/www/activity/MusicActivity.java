@@ -14,10 +14,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.aidlmusicplayer.www.App;
-import com.aidlmusicplayer.www.IMusicPlayer;
-import com.aidlmusicplayer.www.IMusicPlayerListener;
+import com.aidlmusicplayer.www.aidl.IMusicPlayer;
+import com.aidlmusicplayer.www.aidl.IMusicPlayerListener;
 import com.aidlmusicplayer.www.R;
-import com.aidlmusicplayer.www.bean.SongListBean;
+import com.aidlmusicplayer.www.aidl.SongListBean;
 import com.aidlmusicplayer.www.iml.AgSeekBarChangeListener;
 import com.aidlmusicplayer.www.service.MusicService;
 import com.aidlmusicplayer.www.ui.PlayerDiscView;
